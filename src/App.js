@@ -10,14 +10,22 @@ import Help from './Components/Help';
 import Payment from './Components/Payment';
 import Notes from './Components/Notes';
 import Login from './Components/Login';
+import Signup from './Components/Signup';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
   return (
-    <div>
+    <div className="App">
       {!isLoggedIn ? (
-        <Login setIsLoggedIn={setIsLoggedIn} />
+        <>
+          {showSignup ? (
+            <Signup setIsLoggedIn={setIsLoggedIn} setShowSignup={setShowSignup} />
+          ) : (
+            <Login setIsLoggedIn={setIsLoggedIn} setShowSignup={setShowSignup} />
+          )}
+        </>
       ) : (
         <>
           <Navbar />
